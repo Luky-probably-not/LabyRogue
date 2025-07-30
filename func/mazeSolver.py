@@ -1,4 +1,4 @@
-from funcLaby.labyGenerator import *
+from func.labyGenerator import *
 from copy import deepcopy
 
 def Resolve(laby):
@@ -11,7 +11,6 @@ def Resolve(laby):
     rev = ReversePath(path,maze)
     maze = solve(rev,maze)
     maze = beauty(maze)
-    print(rev)
     return len(rev)-1, maze
 
 
@@ -110,8 +109,4 @@ def beauty(maze):
     maze.m[0][0].type = "A"
     maze.m[maze.l-1][maze.l-1].type = "B"
     return maze
-laby = Random(10)
-laby.Empty()
-Resolve(laby)
-
 

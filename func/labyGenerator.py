@@ -1,4 +1,7 @@
 import random as rand
+import copy
+from func.mazeSolver import *
+
 class Case:
 
     def __init__(self,id,type):
@@ -11,7 +14,6 @@ class Case:
             self.type = " "
         else:
             self.type = type
-
     
     def __repr__(self):
         return str(self.id) + ", " + str([self.n,self.e,self.s,self.w])
@@ -164,7 +166,7 @@ class Laby:
                     if caseMirror.n:
                         return "├"
                     else:
-                        return "│"
+                        return "│"  
                 else:
                     if caseMirror.n:
                         return "└"
@@ -208,9 +210,11 @@ def Random(n):
         elif maze[idLig][idCol].id == 0:
             continue
         maze = connect(maze,idLig,idCol,choice)
-
     laby.m = maze
-    return laby
+    if len(ReversePath(Path(copy.deepcopy(laby),0,0),copy.deepcopy(laby))) < 45:
+        return Random(n)
+    else:
+        return laby
 
 def checkDirection(laby,idLig,idCol,choice):
     if idLig == 0 and choice  == 0:
