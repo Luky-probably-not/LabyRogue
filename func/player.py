@@ -65,6 +65,9 @@ class Player:
     def hunter(self,enemy):
         if self.rank == "hunter":
             enemy.hp -= 2
+            if enemy.hp <= 0:
+                enemy.hp = 0
+
 
     def mage(self):
         if self.rank == "mage":
